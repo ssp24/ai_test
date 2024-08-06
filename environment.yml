@@ -1,0 +1,4 @@
+name: test
+channels:
+  - defaults
+prefix: /home/steffi/miniconda3/envs/test
