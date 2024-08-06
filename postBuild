@@ -1,7 +1,13 @@
 #!/bin/bash
 
-# Set environment variables
-echo "export OPENAI_API_KEY='your-openai-api-key'" >> ~/.bashrc
+# Ensure the environment variable is available
+if [ -z "$OPENAI_API_KEY" ]; then
+  echo "Error: OPENAI_API_KEY is not set."
+  exit 1
+fi
+
+# Set environment variables in .bashrc
+echo "export OPENAI_API_KEY='$OPENAI_API_KEY'" >> ~/.bashrc
 
 # Create JupyterLab configuration
 mkdir -p ~/.jupyter/lab/user-settings/@jupyter-ai/jupyter-ai
