@@ -1,2 +1,13 @@
-touch postBuild
-chmod +x postBuild
+#!/bin/bash
+
+# Set environment variables
+echo "export OPENAI_API_KEY='your-openai-api-key'" >> ~/.bashrc
+
+# Create JupyterLab configuration
+mkdir -p ~/.jupyter/lab/user-settings/@jupyter-ai/jupyter-ai
+cat <<EOF > ~/.jupyter/lab/user-settings/@jupyter-ai/jupyter-ai/plugin.jupyterlab-settings
+{
+    "defaultLanguageModel": "openai-chat:gpt-4"
+}
+EOF
+
