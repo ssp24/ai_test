@@ -1,9 +1,16 @@
 #!/bin/bash
 
-set -a
-source .env
-set +a
-exec "$@"
+# Source the .env file if it exists
+if [ -f .env ]; then
+  echo "Loading environment variables from .env file..."
+  source .env
+fi
+
+# Export environment variables to be available for other scripts
+export MY_SECRET_PASSWORD
+
+# Use the secret in your application
+echo "Environment variable MY_SECRET_PASSWORD is set"
 
 
 
