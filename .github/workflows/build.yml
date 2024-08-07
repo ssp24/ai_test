@@ -29,13 +29,13 @@ jobs:
     - name: Set up API key
       run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
 
-    - name: Upload .env to artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: env-file
-        path: .env
-        
-    - name: Run postBuild script
+
+    - name: Push .env to repository
+      env:
+        GH_PAT: ${{ secrets.GH_PAT }}
       run: |
-        chmod +x binder/postBuild
-        binder/postBuild
+        git config --global user.email "ssp24@mailbox.org"
+        git config --global user.name "SN"
+        git add .env
+        git commit -m "Add .env file with secret token"
+        git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git
