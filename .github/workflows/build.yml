@@ -1,0 +1,20 @@
+name: Build and Setup Environment
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  setup-env:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Create .env file with GitHub Secret
+        run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
