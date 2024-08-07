@@ -30,9 +30,15 @@ jobs:
       run: |
         pip install -r binder/requirements.txt
 
-    - name: Set up environment variables
-      run: |
-        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> $GITHUB_ENV
+   - name: Set up API key
+      run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+
+    - name: Upload .env to artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: env-file
+        path: .env
+
 
     - name: Run postBuild script
       run: |
