@@ -7,10 +7,10 @@ if [ -f .env ]; then
 fi
 
 # Export environment variables to be available for other scripts
-export MY_SECRET_PASSWORD
+export OPENAI_API_KEY
 
 # Use the secret in your application
-echo "Environment variable MY_SECRET_PASSWORD is set"
+echo "Environment variable OPENAI_API_KEY is set"
 
 
 
