@@ -6,22 +6,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Pass token to Binder
-      run: |
-        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
-      env:
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-
-    - name: Push .env to repository
-      env:
-        GH_PAT: ${{ secrets.GH_PAT }}
-      run: |
-        git config --global user.email "ssp24@mailbox.org"
-        git config --global user.name "SN"
-        git add .env
-        git commit -m "Add .env file with secret token"
-        git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git
+steps:
+- uses: actions/checkout@v3
+- uses: oNaiPs/secrets-to-env-action@v1
+  with:
+    secrets: ${{ toJSON(secrets) }}
+- run: echo "Value of MY_SECRET: $MY_SECRET"
