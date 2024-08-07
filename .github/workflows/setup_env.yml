@@ -1,4 +1,4 @@
-on:name: Setup Environment
+name: Setup Environment
 
 on:
   push:
