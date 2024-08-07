@@ -15,4 +15,5 @@ echo "Environment variable OPENAI_API_KEY is set"
 
 
 echo "Starting JupyterLab with custom attributes..."
-jupyter lab --AiExtension.default_language_model=anthropic-chat:claude-2.1
+jupyter lab --AiExtension.default_language_model=openai-chat:gpt-4
+%env OPENAI_API_KEY=OPENAI_API_KEY
