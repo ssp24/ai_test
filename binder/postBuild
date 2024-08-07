@@ -8,3 +8,7 @@ fi
 # Create a Jupyter notebook configuration file to set the API key
 mkdir -p ~/.jupyter
 echo "c.NotebookApp.env_keep.append('OPENAI_API_KEY')" >> ~/.jupyter/jupyter_notebook_config.py
+
+# Set the default LLM for jupyter-ai to OpenAI's Chat GPT-4
+echo "jupyter_ai.default_provider = 'openai'" >> ~/.jupyter/jupyter_notebook_config.py
+echo "jupyter_ai.default_model = 'gpt-4'" >> ~/.jupyter/jupyter_notebook_config.py
