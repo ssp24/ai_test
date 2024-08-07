@@ -1,0 +1,28 @@
+on:name: Setup Environment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Create .env file with secret
+        run: |
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Commit .env (secured via gitignore)
+        run: |
+          git add .env
+          git commit -m "Add secure .env file"
+          git push
+        chmod +x binder/postBuild
+        binder/postBuild
