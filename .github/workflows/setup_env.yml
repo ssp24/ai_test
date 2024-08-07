@@ -24,5 +24,3 @@ jobs:
           git add .env
           git commit -m "Add secure .env file"
           git push
-        chmod +x binder/postBuild
-        binder/postBuild
