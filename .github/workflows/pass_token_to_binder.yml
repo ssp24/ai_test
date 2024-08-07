@@ -18,8 +18,8 @@ jobs:
 
     - name: Push .env to repository
       run: |
-        git config --global user.email "you@example.com"
-        git config --global user.name "Your Name"
+        git config --global user.email "ssp24@mailbox.org"
+        git config --global user.name "SN"
         git add .env
         git commit -m "Add .env file with secret token"
         git push
