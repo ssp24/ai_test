@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Starting JupyterLab with custom attributes..."
+jupyter lab --AiExtension.default_language_model=anthropic-chat:claude-2.1
