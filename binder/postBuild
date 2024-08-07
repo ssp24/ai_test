@@ -5,10 +5,12 @@ if [ -f .env ]; then
   export $(cat .env | xargs)
 fi
 
-# Create a Jupyter notebook configuration file to set the API key
+# Create a Jupyter notebook configuration file to set the API key and default LLM
 mkdir -p ~/.jupyter
 echo "c.NotebookApp.env_keep.append('OPENAI_API_KEY')" >> ~/.jupyter/jupyter_notebook_config.py
-
-# Set the default LLM for jupyter-ai to OpenAI's Chat GPT-4
 echo "jupyter_ai.default_provider = 'openai'" >> ~/.jupyter/jupyter_notebook_config.py
 echo "jupyter_ai.default_model = 'gpt-4'" >> ~/.jupyter/jupyter_notebook_config.py
+
+# Set the OPENAI_API_KEY environment variable for the current session
+echo "export OPENAI_API_KEY=${OPENAI_API_KEY}" >> ~/.bashrc
+source ~/.bashrc
