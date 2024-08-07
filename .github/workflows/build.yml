@@ -21,3 +21,9 @@ jobs:
 
       - name: Display .env file content
         run: cat .env
+
+      - name: Upload .env file as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: env-file
+          path: .env
