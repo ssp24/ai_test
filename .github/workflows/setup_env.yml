@@ -21,6 +21,8 @@ jobs:
 
       - name: Commit .env (secured via gitignore)
         run: |
+          git config --global user.email "ssp24@mailbox.org"
+          git config --global user.name "SN"
           git add .env
           git commit -m "Add secure .env file"
           git push
