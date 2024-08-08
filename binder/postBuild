@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Set the default language model
+jupyter lab --generate-config
+echo "c.AiExtension.default_language_model = 'openai-chat:gpt-4'" >> ~/.jupyter/jupyter_lab_config.py
+
+# Set the default API keys
+echo "c.AiExtension.default_api_keys = {'OPENAI_API_KEY':'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'}" >> ~/.jupyter/jupyter_lab_config.py
